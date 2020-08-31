@@ -16,13 +16,13 @@ def main():
             ip, port = (ip_port[0], ip_port[1]) if len(ip_port) > 1 else (ip_port[0], 80)
             url = (f"http://{host}:{port}/")
             req = requests.get(url, auth=('ADMIN', '1234'))
-            if req == "200":
+            if req.status_code == 200:
                 print("[+] VALID CREDENTIALS FOR: {x}")
                 w = open("valid.txt", "a")
                 w.write(x+"\n")
                 w.close()
             else:
-                print("[!] INVALID FOR: {x}")
+                print(f"[!] INVALID FOR: {x}")
        except:
            print("Error exception")
 main()
